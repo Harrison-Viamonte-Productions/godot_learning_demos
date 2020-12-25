@@ -1,0 +1,13 @@
+.import/
+*.import
+.export/
+GFX/
+Lightmaps/
+SFX/
+*.zip
+*.rar
+*.png
+*.jpg
+*.jpeg
+*.exe
+*.pck

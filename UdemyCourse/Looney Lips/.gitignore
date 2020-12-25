@@ -1,0 +1,11 @@
+.import/
+*.import
+.export/
+gfx/
+*.zip
+*.rar
+*.png
+*.jpg
+*.jpeg
+*.exe
+*.pck

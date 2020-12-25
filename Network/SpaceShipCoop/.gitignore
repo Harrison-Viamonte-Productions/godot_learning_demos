@@ -1,0 +1,12 @@
+.import/
+*.import
+.export/
+sprites/
+fonts/
+*.zip
+*.rar
+*.png
+*.jpg
+*.jpeg
+*.exe
+*.pck

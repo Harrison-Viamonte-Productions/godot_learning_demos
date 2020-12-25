@@ -1,0 +1,43 @@
+[
+	{
+	"prompt": [
+        "A name",
+        "a thing",
+        "a feeling",
+        "another feeling",
+        "some things"
+    ],
+	"story": "Once upon a time a %s ate a %s and felt very %s.\nIt was a %s day for all the %s."
+    },
+    
+	{
+	"prompt": [
+        "a name",
+        "a game",
+        "a verb",
+        "a thing"
+    ],
+	"story": "I remember when %s was playing %s and decided that %s was a good idea. Because that %s is now a big world issue."
+    },
+    
+	{
+	"prompt": [
+        "a verb",
+        "a thing",
+        "a verb",
+        "a name",
+        "a verb"
+    ],
+	"story": "While doing %s the %s started to %s. The nuclear war never was so close after %s tried to %s."
+    },
+    
+	{
+	"prompt": [
+        "a place",
+        "a game",
+        "a verb",
+        "a thing"
+    ],
+	"story": "In %s, during the afternoon, %s decided to ride a %s while screaming ' %s ' to the citizens."
+	}
+]

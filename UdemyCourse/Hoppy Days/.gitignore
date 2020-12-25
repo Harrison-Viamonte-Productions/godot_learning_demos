@@ -1,0 +1,14 @@
+.import/
+*.import
+.export/
+GFX/
+Lightmaps/
+SFX/
+Fonts/
+*.zip
+*.rar
+*.png
+*.jpg
+*.jpeg
+*.exe
+*.pck

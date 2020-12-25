@@ -1,0 +1,11 @@
+.import/
+*.import
+.export/
+assets/
+*.zip
+*.rar
+*.png
+*.jpg
+*.jpeg
+*.exe
+*.pck

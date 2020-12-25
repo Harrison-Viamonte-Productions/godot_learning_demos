@@ -1,0 +1,131 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/lobby.gd" type="Script" id=1]
+[ext_resource path="res://fonts/cave-story.tres" type="DynamicFont" id=2]
+
+[node name="Lobby" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelTitleScreen" type="Panel" parent="."]
+margin_right = 1020.0
+margin_bottom = 600.0
+
+[node name="LabelTitle" type="Label" parent="PanelTitleScreen"]
+margin_left = 250.0
+margin_top = 20.0
+margin_right = 475.0
+margin_bottom = 45.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 2 )
+text = "Bomberman !"
+align = 1
+
+[node name="LabelAddress" type="Label" parent="PanelTitleScreen"]
+margin_left = 300.0
+margin_top = 160.0
+margin_right = 379.0
+margin_bottom = 181.0
+rect_rotation = 0.0873362
+custom_fonts/font = ExtResource( 2 )
+text = "Address"
+
+[node name="JoinAddress" type="LineEdit" parent="PanelTitleScreen"]
+margin_left = 290.0
+margin_top = 190.0
+margin_right = 436.0
+margin_bottom = 221.0
+custom_fonts/font = ExtResource( 2 )
+text = "127.0.0.1"
+
+[node name="LabelPlayerName" type="Label" parent="PanelTitleScreen"]
+margin_left = 212.0
+margin_top = 98.0
+margin_right = 264.0
+margin_bottom = 119.0
+rect_rotation = 0.0873362
+custom_fonts/font = ExtResource( 2 )
+text = "Name"
+
+[node name="PlayerName" type="LineEdit" parent="PanelTitleScreen"]
+margin_left = 274.0
+margin_top = 94.0
+margin_right = 420.0
+margin_bottom = 125.0
+custom_fonts/font = ExtResource( 2 )
+text = "Reduz"
+
+[node name="ButtonHost" type="Button" parent="PanelTitleScreen"]
+margin_left = 210.0
+margin_top = 250.0
+margin_right = 280.0
+margin_bottom = 300.0
+custom_fonts/font = ExtResource( 2 )
+text = "host"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonJoin" type="Button" parent="PanelTitleScreen"]
+margin_left = 210.0
+margin_top = 180.0
+margin_right = 280.0
+margin_bottom = 230.0
+custom_fonts/font = ExtResource( 2 )
+text = "join"
+
+[node name="LabelStatus" type="Label" parent="PanelTitleScreen"]
+margin_left = 300.0
+margin_top = 250.0
+margin_right = 590.0
+margin_bottom = 300.0
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="PanelWaitPlayers" type="Panel" parent="."]
+visible = false
+margin_right = 1020.0
+margin_bottom = 600.0
+
+[node name="LabelTitle" type="Label" parent="PanelWaitPlayers"]
+margin_left = 290.0
+margin_top = 20.0
+margin_right = 515.0
+margin_bottom = 45.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 2 )
+text = "Waiting for players..."
+align = 1
+
+[node name="LabelPlayerList" type="Label" parent="PanelWaitPlayers"]
+margin_left = 427.0
+margin_top = 119.0
+margin_right = 596.0
+margin_bottom = 324.0
+rect_rotation = 0.0873362
+custom_fonts/font = ExtResource( 2 )
+
+[node name="LabelPlayerCount" type="Label" parent="PanelWaitPlayers"]
+margin_left = 438.0
+margin_top = 76.0
+margin_right = 562.0
+margin_bottom = 102.0
+rect_rotation = 0.0873362
+custom_fonts/font = ExtResource( 2 )
+text = "0/4"
+align = 1
+
+[node name="ButtonStart" type="Button" parent="PanelWaitPlayers"]
+margin_left = 470.0
+margin_top = 340.0
+margin_right = 540.0
+margin_bottom = 390.0
+custom_fonts/font = ExtResource( 2 )
+text = "Start"
+[connection signal="pressed" from="PanelTitleScreen/ButtonHost" to="." method="_on_ButtonHost_pressed"]
+[connection signal="pressed" from="PanelTitleScreen/ButtonJoin" to="." method="_on_ButtonJoin_pressed"]
+[connection signal="pressed" from="PanelWaitPlayers/ButtonStart" to="." method="_on_ButtonStart_pressed"]
