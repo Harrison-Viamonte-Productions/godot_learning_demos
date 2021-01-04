@@ -164,6 +164,12 @@ func fill_with_random_vals(vals: Array, percent: float = 1.0):
 		cells.remove(cell_index)
 		i+=1
 
+func replace(old_val: int, new_val: int):
+	for x in size.x:
+		for y in size.y:
+			if grid[x][y] == old_val:
+				grid[x][y] = new_val
+
 func get_grid_array() -> Array:
 	return grid.duplicate(true)
 

@@ -92,7 +92,7 @@ func generate_map():
 	available_items_cells = PCG.substract_cells_from_rec2(available_items_cells, Rect2(key_room.get_size().position-Vector2(int(key_margin_dist.x/2), int(key_margin_dist.y/2)), key_room.get_size().size+key_margin_dist), 1)
 	print("Key spawned at: " + str(generate_items(map_grid, available_items_cells, key_spawn_id, 1)[0]))
 
-	fill_ground($Ground.tile_set.find_tile_by_name('ground_green'), map_grid)
+	map_grid.ground.replace(-1, $Ground.tile_set.find_tile_by_name('ground_green'))
 	clean_walls(map_grid, $Walls.tile_set.find_tile_by_name('wall_brick'), $Walls.tile_set.find_tile_by_name('crate_blue'))
 
 	map_grid.ground.map_to_tilemap($Ground)
@@ -124,7 +124,6 @@ func generate_room(spawn_key: bool = false) -> RoomObj: # RoomObj
 		init_walkers()
 		g_room.clear()
 		g_room.ground.set_grid_array(PCG.generate_path_with_walkers(g_room.ground.get_grid_array(), 1000, $Ground.tile_set.find_tile_by_name('ground_grey'), 0.35, rng, Vector2(int(room_bounds.x/2), int(room_bounds.y/2))))
-		#generate_walk_paths(1000, $Ground.tile_set.find_tile_by_name('ground_grey'), 0.35, g_room, Vector2(int(room_bounds.x/2), int(room_bounds.y/2)))
 		generate_walls($Walls.tile_set.find_tile_by_name('wall_grey'), g_room)
 	
 	var available_cells: Array = g_room.ground.get_used_cells()
@@ -135,7 +134,7 @@ func generate_room(spawn_key: bool = false) -> RoomObj: # RoomObj
 	var slimes: int = int(available_cells.size()*rng.randf_range(0.075, 0.125))
 	generate_items(g_room, available_cells, coin_spawn_id, coins)
 	generate_items(g_room, available_cells, slime_spawn_id, slimes)
-	fill_ground($Ground.tile_set.find_tile_by_name('ground_grey'), g_room)
+	g_room.ground.replace(-1, $Ground.tile_set.find_tile_by_name('ground_grey'))
 	return g_room
 
 func can_place_door(tile_pos: Vector2, grid: GridObj, wall_tile_id: int) -> bool:
@@ -144,13 +143,6 @@ func can_place_door(tile_pos: Vector2, grid: GridObj, wall_tile_id: int) -> bool
 	elif (grid.filter_neighbors(tile_pos, wall_tile_id, PCG.N | PCG.S).size() == 0) and (grid.filter_neighbors(tile_pos, wall_tile_id, PCG.E | PCG.W).size() == 2):
 		return true
 	return false
-
-func is_in_bounds(tile_pos: Vector2, grid: GridObj, start: Vector2, end: Vector2) -> bool:
-	if (tile_pos.x < start.x or tile_pos.y < start.y or tile_pos.x >= end.x or tile_pos.y >= end.y):
-		return false
-	if grid.get_cellv(tile_pos) != -1:
-		return false
-	return true
 
 func generate_doors(room: RoomObj, door_id: int) -> bool:
 	var room_bounds: Vector2 = room.get_size().size
@@ -199,13 +191,6 @@ func generate_items(room: RoomObj, cells: Array, type_id: int, count: int) -> Ar
 		cells.remove(i)
 		count-=1
 	return cells_used
-
-func fill_ground(tile_id: int, room: RoomObj):
-	var room_bounds: Vector2 = room.get_size().size
-	for x in range(room_bounds.x):
-		for y in range (room_bounds.y):
-			if room.ground.get_cell(x, y) == -1:
-				room.ground.set_cell(x, y, tile_id)
 
 func set_camera_limits():
 	var map_size: Rect2 = $Ground.get_used_rect()
